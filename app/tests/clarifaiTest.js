@@ -9,4 +9,4 @@ const runTest = async () => {
 
 runTest();
 
-// To run this test, use the command: node app/tests/clarifaiTest.js
+// To run this test, use the command: node C:\Users\adamh\Desktop\recipe-app\app\tests\clarifaiTest.js
