@@ -4,6 +4,11 @@ import { useEffect } from "react";
 // Import components from React Native (to build UI for mobile apps)
 import { Text, View } from "react-native";
 
+// import constant for API key
+import Constants from 'expo-constants';
+const SPOON_KEY = Constants.expoConfig?.extra?.SPOONACULAR_API_KEY;
+console.log('Loaded Spoonacular key:', SPOON_KEY);
+
 // Default exported component named "Index" (required by expo-router for index.js files)
 export default function Index() {
 
@@ -31,7 +36,7 @@ export default function Index() {
         // - number=2 means: return only 2 recipes
         // - apiKey=5c6de4569edb47f680801f869c415b2b is the authentication key
         const response = await fetch(
-          `https://api.spoonacular.com/recipes/findByIngredients?ingredients=${ingredients}&number=2&apiKey=8f0248c6c7de45ae845a6ff6b9aa349f`
+          `https://api.spoonacular.com/recipes/findByIngredients?ingredients=${ingredients}&number=2&apiKey=${SPOON_KEY}`
         );
 
         // Convert the raw HTTP response into JSON format (JavaScript object/array)
