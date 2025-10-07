@@ -1,4 +1,4 @@
-// app/services/clarifaiClient.js
+// /services/clarifaiClient.js
 import "dotenv/config";
 
 const PAT = process.env.CLARIFAI_API_KEY;

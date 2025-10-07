@@ -13,13 +13,25 @@ export default function Index() {
     // Define an async function to call the Spoonacular API
     const fetchRecipes = async () => {
       try {
+
+        const clarafai_response = await fetch("/clarifaiResults.json"); // <-- NEW
+        const detectedFoods = await clarafai_response.json(); // <-- NEW
+
+        const topFoods = detectedFoods
+          .filter((item) => item.probability > 0.05) // keep only confident predictions
+          .slice(0, 5); // take top 5 items
+
+          // NEW: map to names and join into comma-separated string
+          const ingredients = topFoods.map((item) => item.name).join(",");
+          console.log("Detected ingredients:", ingredients);
+
         // Make a network request to the Spoonacular API
         // - "findByIngredients" endpoint lets us pass ingredient names
         // - ingredients=apples,flour means: look for recipes with apples and flour
         // - number=2 means: return only 2 recipes
         // - apiKey=5c6de4569edb47f680801f869c415b2b is the authentication key
         const response = await fetch(
-          "https://api.spoonacular.com/recipes/findByIngredients?ingredients=apples,flour&number=2&apiKey=5c6de4569edb47f680801f869c415b2b"
+          `https://api.spoonacular.com/recipes/findByIngredients?ingredients=${ingredients}&number=2&apiKey=8f0248c6c7de45ae845a6ff6b9aa349f`
         );
 
         // Convert the raw HTTP response into JSON format (JavaScript object/array)
@@ -50,7 +62,3 @@ export default function Index() {
     </View>
   );
 }
-
-
-
-

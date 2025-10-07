@@ -1,0 +1,82 @@
+[
+  {
+    "name": "pear",
+    "probability": 0.853585
+  },
+  {
+    "name": "apple",
+    "probability": 0.8030397
+  },
+  {
+    "name": "citrus",
+    "probability": 0.40877557
+  },
+  {
+    "name": "berry",
+    "probability": 0.13376753
+  },
+  {
+    "name": "orange",
+    "probability": 0.11226783
+  },
+  {
+    "name": "bread",
+    "probability": 0.068686694
+  },
+  {
+    "name": "nectarine",
+    "probability": 0.052201763
+  },
+  {
+    "name": "blood orange",
+    "probability": 0.050348576
+  },
+  {
+    "name": "plum",
+    "probability": 0.021357864
+  },
+  {
+    "name": "lemon",
+    "probability": 0.010666613
+  },
+  {
+    "name": "apricot",
+    "probability": 0.010627197
+  },
+  {
+    "name": "peach",
+    "probability": 0.0098974
+  },
+  {
+    "name": "tangerine",
+    "probability": 0.00963898
+  },
+  {
+    "name": "cake",
+    "probability": 0.009342698
+  },
+  {
+    "name": "prune",
+    "probability": 0.009056121
+  },
+  {
+    "name": "cherry",
+    "probability": 0.008234764
+  },
+  {
+    "name": "brioche",
+    "probability": 0.0069914637
+  },
+  {
+    "name": "fig",
+    "probability": 0.0054807826
+  },
+  {
+    "name": "pudding",
+    "probability": 0.005381344
+  },
+  {
+    "name": "mint",
+    "probability": 0.004873977
+  }
+]
