@@ -2,7 +2,12 @@ from ultralytics import YOLO
 import requests
 from PIL import Image
 from io import BytesIO
+from dotenv import load_dotenv
 import os
+
+# Load environment variables from .env
+load_dotenv()
+api_key = os.getenv("SPOONACULAR_API_KEY")
 
 model = YOLO("yolov8n.pt")
 
@@ -36,15 +41,15 @@ def detect_foods(image_path_or_url):
 
 
 def get_recipes(ingredients):
-    api_key = os.getenv("SPOONACULAR_API_KEY")
     query = ",".join(ingredients)
     url = f"https://api.spoonacular.com/recipes/findByIngredients?ingredients={query}&apiKey={api_key}"
     return requests.get(url).json()
 
 
-# Example
+# List detected foods from a test image (JSON format)
 detected = detect_foods("C:/Users/adamh/Desktop/recipe-app/app/test_images/fruit-in-bowl.jpg")
 print("Detected foods:", detected)
 
-#recipes = get_recipes(detected)
-#print("Recipes:", recipes)
+# Print recipes based on detected foods via Spoonacular API
+recipes = get_recipes(detected)
+print("Recipes:", recipes)
