@@ -47,7 +47,7 @@ def get_recipes(ingredients):
 
 
 # List detected foods from a test image (JSON format)
-detected = detect_foods("C:/Users/adamh/Desktop/recipe-app/app/test_images/fruit-in-bowl.jpg")
+detected = detect_foods("app/test_images/fruit-in-bowl.jpg")
 print("Detected foods:", detected)
 
 # Print recipes based on detected foods via Spoonacular API
