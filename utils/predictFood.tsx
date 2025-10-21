@@ -1,5 +1,5 @@
 // Your PAT (Personal Access Token) can be found in the Account's Security section
-const PAT = process.env.CLARIFAI_API_KEY;
+const PAT = "4eceeb0542e94e379a6fc133d25c596b";
 // Specify the correct user_id/app_id pairings
 // Since you're making inferences outside your app's scope
 const USER_ID = "clarifai";
@@ -45,8 +45,12 @@ export const predictFood = async (imageUriOrUrl: string) => {
       requestOptions,
     );
 
-    console.log(response);
-    return response;
+    const result = await response.json();
+
+    return result.outputs[0].data.concepts.map((item: any) => ({
+      name: item.name,
+      probability: item.value,
+    }));
   } catch (error) {
     console.error("Error predicting food:", error);
     return [];
