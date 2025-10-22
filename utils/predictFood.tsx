@@ -10,11 +10,17 @@ const MODEL_VERSION_ID = "1d5fd481e0cf4826aa72ec3ff049e044";
 
 /**
  * predictFood - Predicts food items in an image
- * @param {string} imageUriOrUrl - Public URL or local URI
+ * @param {string} imageData - Base64 encoded image data or public URL
+ * @param {boolean} isBase64 - Whether the imageData is base64 encoded
  * @returns {Array} - [{ name: "apple", probability: 0.98 }, ...]
  */
-export const predictFood = async (imageUriOrUrl: string) => {
+export const predictFood = async (
+  imageData: string,
+  isBase64: boolean = false,
+) => {
   try {
+    const imageInput = isBase64 ? { base64: imageData } : { url: imageData };
+
     const raw = JSON.stringify({
       user_app_id: {
         user_id: USER_ID,
@@ -23,9 +29,7 @@ export const predictFood = async (imageUriOrUrl: string) => {
       inputs: [
         {
           data: {
-            image: {
-              url: imageUriOrUrl,
-            },
+            image: imageInput,
           },
         },
       ],
@@ -46,6 +50,11 @@ export const predictFood = async (imageUriOrUrl: string) => {
     );
 
     const result = await response.json();
+
+    if (result.status.code !== 10000) {
+      console.error("Error predicting food:", result);
+      return [];
+    }
 
     return result.outputs[0].data.concepts.map((item: any) => ({
       name: item.name,
