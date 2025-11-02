@@ -168,7 +168,7 @@ export const layoutStyles = StyleSheet.create({
     borderTopColor: "#E5E5EA",
     paddingBottom: 8,
     paddingTop: 8,
-    // REMOVED height: 88 to prevent clipping the camera button
+    
   },
 
   // Styles for the header container
@@ -185,7 +185,7 @@ export const layoutStyles = StyleSheet.create({
   cameraTabButton: {
     width: 60,
     height: 60,
-    borderRadius: 30, // Makes it a perfect circle
+    borderRadius: 30, // Makes it a perfect circle / or not
     bottom: 20, // This pushes it UP, making it overlap
     justifyContent: "center",
     alignItems: "center",
@@ -490,5 +490,213 @@ export const editProfileStyles = StyleSheet.create({
     height: 430,
     resizeMode: 'contain',
     marginTop: 20,    // Adds some space below the text
+  },
+});
+
+
+//------------------------------------------------------------------------------------------
+// RECIPEDETAILMODAL.TSX
+//------------------------------------------------------------------------------------------
+
+export const RecipeDetailModalStyles = StyleSheet.create({
+  contentContainer: {
+    flex: 1,
+  },
+  scrollContainer: {
+    paddingBottom: 40,
+  },
+  centered: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    padding: 24,
+  },
+  errorText: {
+    fontSize: 16,
+    color: "#FF3B30",
+  },
+  image: {
+    width: "100%",
+    height: 250,
+  },
+  title: {
+    fontSize: 24,
+    fontWeight: "700",
+    color: "#1C1C1E",
+    padding: 24,
+  },
+  infoRow: {
+    flexDirection: "row",
+    justifyContent: "space-around",
+    paddingHorizontal: 24,
+    paddingBottom: 24,
+    borderBottomWidth: 1,
+    borderBottomColor: "#E5E5EA",
+  },
+  infoBox: {
+    alignItems: "center",
+    gap: 8,
+  },
+  infoText: {
+    fontSize: 16,
+    fontWeight: "500",
+  },
+  section: {
+    padding: 24,
+  },
+  sectionTitle: {
+    fontSize: 20,
+    fontWeight: "600",
+    color: "#1C1C1E",
+    marginBottom: 12,
+  },
+  stepText: {
+    fontSize: 16,
+    color: "#3C3C43",
+    lineHeight: 24,
+    marginBottom: 8,
+  },
+});
+
+//--------------------------------------------------------------------------------------------
+// LOADING.TSX
+//--------------------------------------------------------------------------------------------
+
+export const LoadingStyles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#F8F9FA' // background color
+  },
+  loadingText: {
+    marginTop: 12,
+    fontSize: 16,
+    color: '#8E8E93',
+    fontStyle: 'italic',
+  }
+});
+
+//-------------------------------------------------------------------------------------
+// LOADINGANIMATION.TSX
+//-------------------------------------------------------------------------------------
+
+export const LoadingAnimationStyles = StyleSheet.create({
+  container: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    height: 150, // fixed height for the loading area
+  },
+  lottie: {
+    width: 400, // Adjust the size
+    height: 430,
+  },
+});
+
+
+//------------------------------------------------------------------------------------------
+// EDITINGREDIENTS.TSX
+//------------------------------------------------------------------------------------------
+
+export const EditIngredientsStyles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: "#F8F9FA",
+  },
+  header: {
+    padding: 24,
+    backgroundColor: "#FFFFFF",
+    borderBottomWidth: 1,
+    borderBottomColor: "#E5E5EA",
+  },
+  listContent: {
+    padding: 24,
+  },
+  listItem: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+    padding: 16,
+    backgroundColor: "#FFFFFF",
+    borderRadius: 12,
+    marginBottom: 12,
+    shadowColor: "#000",
+    shadowOffset: { width: 0, height: 1 },
+    shadowOpacity: 0.05,
+    shadowRadius: 2,
+    elevation: 2,
+  },
+  itemText: {
+    fontSize: 16,
+    textTransform: "capitalize",
+    fontWeight: "500",
+    flex: 1, // Make text wrap
+    marginRight: 8,
+  },
+  inputContainer: {
+    flexDirection: "row",
+    marginTop: 16,
+  },
+  input: {
+    flex: 1,
+    backgroundColor: "#FFFFFF",
+    padding: 16,
+    borderRadius: 12,
+    fontSize: 16,
+    borderWidth: 1,
+    borderColor: "#E5E5EA",
+  },
+  addButton: {
+    marginLeft: 12,
+    backgroundColor: "#44AF16",
+    padding: 16,
+    borderRadius: 12,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  addButtonText: {
+    color: "#FFFFFF",
+    fontSize: 16,
+    fontWeight: "600",
+  },
+  confirmButtonContainer: {
+    padding: 24,
+    borderTopWidth: 1,
+    borderTopColor: "#E5E5EA",
+    backgroundColor: "#F8F9FA",
+  },
+});
+
+
+//------------------------------------------------------------------------------------------
+// CAMERA.TSX
+//------------------------------------------------------------------------------------------
+
+export const CameraStyles2 = StyleSheet.create({
+  recipeCard: {
+    backgroundColor: "#FFFFFF",
+    borderRadius: 12,
+    flexDirection: "row",
+    alignItems: "center",
+    padding: 12,
+    shadowColor: "#000",
+    shadowOffset: { width: 0, height: 1 },
+    shadowOpacity: 0.1,
+    shadowRadius: 3,
+    elevation: 3,
+  },
+  recipeImage: {
+    width: 70,
+    height: 70,
+    borderRadius: 8,
+    marginRight: 12,
+  },
+  recipeInfo: {
+    flex: 1,
+  },
+  recipeTitle: {
+    fontSize: 16,
+    fontWeight: "600",
+    color: "#1C1C1E",
   },
 });

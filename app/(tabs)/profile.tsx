@@ -1,3 +1,5 @@
+// main app color hex #44AF16
+
 import { Ionicons } from "@expo/vector-icons";
 import {
   ScrollView,
@@ -6,10 +8,9 @@ import {
   View
 } from "react-native";
 
-import { profileStyles } from "./styles";
+import { profileStyles } from "../styles";
 
 import { Link } from 'expo-router';
-//added this trying to delete extra button in navigation bar
 
 export default function ProfileScreen() {
   return (

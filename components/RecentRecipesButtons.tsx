@@ -1,6 +1,20 @@
 // This is where all the buttons for the home page recent recipes goes
 // Everyhting in this file will work only for the recent recipes section
 
+
+/* It's a "static" component, meaning it just shows hard-coded recipe buttons
+(Pasta, Chicken, Salad) that don't do anything yet.
+
+Feature Idea: This is a perfect place for a new feature. We could:
+1) Make it dynamic: Instead of hard-coding the recipes, make the component accept 
+an array of recipe objects as props.
+2) Connect it to History: The best feature would be to save the last 3-5 recipes
+the user actually viewed (from the modal) into AsyncStorage (local storage). 
+Then, this component could read from that storage and truly show "Recent Recipes." */
+
+
+
+
 import React from "react";
 import { Image, Text, TouchableOpacity, View } from "react-native";
 import { recentStyles } from "../app/styles";

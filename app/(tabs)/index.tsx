@@ -1,5 +1,17 @@
 // main app color hex #44AF16
 
+
+/* The main landing page. Right now, it shows "Quick Actions"
+and the RecentRecipesButtons component.*/
+
+/*
+The "Quick Actions" buttons are just static.
+We could make them functional. 
+The "Scan Food" button, for example, could use router.push('/(tabs)/camera') 
+to navigate to the camera tab. */
+
+
+
 import { Ionicons } from "@expo/vector-icons";
 import React from "react";
 import {
@@ -9,8 +21,8 @@ import {
   TouchableOpacity,
   View
 } from "react-native";
-import RecentRecipesButtons from "../components/RecentRecipesButtons";
-import { homeStyles } from "./styles";
+import RecentRecipesButtons from "../../components/RecentRecipesButtons";
+import { homeStyles } from "../styles";
 
 // Import now goes up one level (../) and into the components directory
 // The styles.ts file is at the root, so import path is (./)
@@ -21,13 +33,13 @@ export default function HomeScreen() {
     <ScrollView style={homeStyles.container}>
       
       <Image
-        source={require("./media_used/home_screen_header.jpg")}
+        source={require("../media_used/home_screen_header.jpg")}
         style={homeStyles.headerImage}
       />
       
       <View style={homeStyles.logoContainer}>
         <Image
-          source={require("./media_used/logo.png")}
+          source={require("../media_used/logo.png")}
           style={homeStyles.logo}
         />
       </View>

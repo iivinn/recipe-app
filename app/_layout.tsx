@@ -1,108 +1,66 @@
-import { Ionicons } from "@expo/vector-icons";
-import { Tabs } from "expo-router";
-import { View } from "react-native";
+// app/_layout.tsx
+
+/* This is the most important layout file. It sets up the main Stack navigator. 
+Its job is to manage screens that live outside or on top of the tab bar. 
+It also holds the global providers (GestureHandlerRootView and BottomSheetModalProvider) 
+that allow gestures and bottom sheets to work anywhere in the app. */
+
+/* This is the perfect place to add a Login/Sign-up screen. 
+We could add logic here that checks if a user is logged in. 
+If not, show a (auth)/login screen. If they are, show the (tabs) screen. */
+
+
+//Imports
+
+import { BottomSheetModalProvider } from '@gorhom/bottom-sheet';
+import { Stack } from 'expo-router';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
+
+//----------------------------------------------------------------------------------------------------------
+// This is the root layout of the entire app.
+// Everything starts here.
 
 export default function RootLayout() {
   return (
-    <Tabs
-      screenOptions={{
-        tabBarActiveTintColor: "#06c11fff",
-        tabBarInactiveTintColor: "#8e938eff",
-        tabBarStyle: {
-          backgroundColor: "#FFFFFF",
-          borderTopWidth: 1,
-          borderTopColor: "#E5E5EA",
-          paddingBottom: 8,
-          paddingTop: 8,
-          height: 88,
-        },
-        headerStyle: {
-          backgroundColor: "#FFFFFF",
-        },
-        headerTintColor: "#000000",
-        headerTitleStyle: {
-          fontWeight: "600",
-        },
-      }}
-    >
-      <Tabs.Screen
-        name="index"
-        options={{
-          title: "Home",
-          tabBarIcon: ({ color, size }) => (
-            <Ionicons name="home-outline" size={size} color={color} />
-          ),
-          headerTitle: "Recipe App",
-        }}
-      />
-      <Tabs.Screen
-        name="camera"
-        options={{
-          // We hide the text label under the icon
-          tabBarLabel: () => null, 
-          headerTitle: "Scan Food",
+    // These providers need to be at the very top
+    // GestureHandlerRootView is required for react-native-gesture-handler to work.
+    // We wrap our entire app in it.
+    <GestureHandlerRootView style={{ flex: 1 }}>
+      <BottomSheetModalProvider>
+        {/*We use a Stack navigator as the root. 
+            This allows us to present MODAL screens on top of our tab bar. */}
+        <Stack>
+          {/* This screen points to the (tabs) group. 
+              It will render the layout file inside the (tabs) folder, 
+              which contains our actual bottom tab bar.
+              We hide the header for this stack screen. */}
+          <Stack.Screen 
+            name="(tabs)" 
+            options={{ headerShown: false }} 
+          />
           
-          // We use 'focused' to know if the tab is active
-          tabBarIcon: ({ focused, size }) => (
-            <View
-              style={{
-                // This is the circle
-                width: 70,
-                height: 70,
-                borderRadius: 31, 
-                backgroundColor: focused ? "#ffffffff" : "#2bd209ff", 
-                
-                // This is the overlap
-                bottom: 20, 
-                
-                // Centering the icon inside the circle
-                justifyContent: "center",
-                alignItems: "center",
-                
-                // Optional shadow
-                shadowColor: "#000",
-                shadowOffset: { width: 0, height: 0 },
-                shadowOpacity: 0.2,
-                shadowRadius: 5,
-                elevation: 5,
-              }}
-            >
-              <Ionicons
-                name="camera"
-                size={size * 1.6} 
-                color={focused ? "#05c70bff" : "#ffffffff"}
-              />
-            </View>
-          ),
-        }}
-      />
-      <Tabs.Screen
-        name="profile" // This points to app/profile.tsx
-        options={{
-          title: "Profile",
-          tabBarIcon: ({ color, size }) => (
-            <Ionicons name="person-outline" size={size} color={color} />
-          ),
-          headerTitle: "My Profile",
-        }}
-      />
-      
-      // ---------HERE IS THE FIX: You must list your sub-pages here and hide them.-----------
-      <Tabs.Screen
-        name="(profile)/1edit-profile" // This MUST match the file path
-        options={{
-          href: null, // This hides it from the tab bar
-          headerTitle: 'Edit Profile' // Sets the title when you go to the page
-        }}
-      />
-
-      {/* Add your other hidden screens here later
-      <Tabs.Screen
-        name="(profile)/2notifications" 
-        options={{ href: null, headerTitle: 'Notifications' }}
-      />
-      */}
-
-    </Tabs>
+          {/* This is our modal screen. 
+              By defining it here, at the root, it can slide up 
+              and cover the entire app, including the tab bar. */}
+          <Stack.Screen
+            name="edit-ingredients"
+            options={{
+              presentation: "modal", // This tells the Stack to show it as a modal
+              headerShown: false, // We use a custom header inside the file
+            }}
+          />
+          
+          <Stack.Screen
+            name="loading" // This file name matches app/loading.tsx
+            options={{
+              presentation: "modal",     // Show as a modal
+              headerShown: false,      // No header
+              gestureEnabled: false,   // User can't swipe down to dismiss
+            }}
+          />
+        
+        </Stack>
+      </BottomSheetModalProvider>
+    </GestureHandlerRootView>
   );
 }
