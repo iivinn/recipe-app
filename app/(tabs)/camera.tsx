@@ -18,6 +18,9 @@ import {
   TouchableOpacity,
   View
 } from "react-native";
+
+import { SafeAreaView } from "react-native-safe-area-context";
+
 import { cameraStyles, CameraStyles2 } from "../styles";
 
 
@@ -227,7 +230,9 @@ export default function CameraScreen() {
   );
 
   return (
-    <>
+    <SafeAreaView 
+      style={{ flex: 1, backgroundColor: cameraStyles.container.backgroundColor }} 
+      edges={['top']}>
       <FlatList
         style={cameraStyles.container}
         ListHeaderComponent={renderHeader}
@@ -236,7 +241,7 @@ export default function CameraScreen() {
         keyExtractor={(item) => item.id.toString()}
         contentContainerStyle={{ 
           paddingHorizontal: 24, 
-          paddingBottom: 40 
+          paddingBottom: 180 
         }}
         ItemSeparatorComponent={() => <View style={{ height: 12 }} />}
         
@@ -250,7 +255,7 @@ export default function CameraScreen() {
       />
       
       <RecipeDetailModal ref={bottomSheetModalRef} />
-    </>
+    </SafeAreaView>
   );
 }
 

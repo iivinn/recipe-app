@@ -22,6 +22,7 @@ export default function TabsLayout() {
   return (
     <Tabs
       screenOptions={{
+        headerShown: false,
         tabBarActiveTintColor: "#06c11fff",
         tabBarInactiveTintColor: "#8e938eff",
         
@@ -46,10 +47,6 @@ export default function TabsLayout() {
           shadowOpacity: 0.25,
           shadowRadius: 3.84,
         },
-        // --- END OF REPLACEMENT ---,
-
-        
-
 
         headerStyle: {
           backgroundColor: "#FFFFFF",
@@ -59,7 +56,7 @@ export default function TabsLayout() {
           fontWeight: "600",
         },
       }}
-    > {/* Each <Tabs.Screen> creates a new tab in the bar. */}
+    > 
       <Tabs.Screen
         name="index"
         options={{
@@ -67,7 +64,7 @@ export default function TabsLayout() {
           tabBarIcon: ({ color, size }) => (
             <Ionicons name="home-outline" size={size} color={color} />
           ),
-          headerTitle: "Recipe App",
+          headerTitle: "Home",
         }}
       />
       <Tabs.Screen
@@ -79,8 +76,8 @@ export default function TabsLayout() {
             // This is the custom circular, floating camera button
             <View
               style={{
-                width: 80,
-                height: 80,
+                width: 75,
+                height: 75,
                 borderRadius: 32, 
                 backgroundColor: focused ? "#ffffffff" : "#2bd209ff", 
                 bottom: 25, // Pushes it up
@@ -121,6 +118,70 @@ export default function TabsLayout() {
         options={{
           href: null,
           headerTitle: 'Edit Profile'
+        }}
+      />
+      
+      <Tabs.Screen
+        name="(profile)/2notifications" 
+        options={{
+          href: null,
+          headerTitle: 'Notifications'
+        }}
+      />
+
+      <Tabs.Screen
+        name="(profile)/3privacy" 
+        options={{
+          href: null,
+          headerTitle: 'Privacy'
+        }}
+      />
+
+      <Tabs.Screen
+        name="(profile)/4dietery-preferances" 
+        options={{
+          href: null,
+          headerTitle: 'Dietery Preferances'
+        }}
+      />
+
+      <Tabs.Screen
+        name="(profile)/5language" 
+        options={{
+          href: null,
+          headerTitle: 'Language'
+        }}
+      />
+
+      <Tabs.Screen
+        name="(profile)/6dark-mode" 
+        options={{
+          href: null,
+          headerTitle: 'Dark Mode'
+        }}
+      />
+
+      <Tabs.Screen
+        name="(profile)/7help" 
+        options={{
+          href: null,
+          headerTitle: 'Help'
+        }}
+      />
+
+      <Tabs.Screen
+        name="(profile)/8contact" 
+        options={{
+          href: null,
+          headerTitle: 'Contact'
+        }}
+      />
+
+      <Tabs.Screen
+        name="(profile)/9rate" 
+        options={{
+          href: null,
+          headerTitle: 'Rate'
         }}
       />
 

@@ -5,7 +5,7 @@
     "version": "1.0.0",
     "orientation": "portrait",
     
-    "icon": "./app/media_used/hatWhite.png", 
+    "icon": "./app/media_used/logo.png", 
     
     "scheme": "recipeapp",
     "userInterfaceStyle": "automatic",
@@ -18,7 +18,7 @@
       "adaptiveIcon": {
         "backgroundColor": "#44AF16",
         
-        "foregroundImage": "./app/media_used/hatWhite.png"
+        "foregroundImage": "./app/media_used/logo.png"
       },
       "edgeToEdgeEnabled": true,
       "predictiveBackGestureEnabled": false,
@@ -27,14 +27,14 @@
     "web": {
       "output": "static",
       
-      "favicon": "./app/media_used/hatWhite.png"
+      "favicon": "./app/media_used/logo.png"
     },
     "plugins": [
       "expo-router",
       [
         "expo-splash-screen",
         {
-          "image": "./app/media_used/hatWhite.png",
+          "image": "./app/media_used/logo.png",
           "imageWidth": 200,
           
           "resizeMode": "contain",

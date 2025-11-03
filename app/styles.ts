@@ -463,6 +463,7 @@ export const profileStyles = StyleSheet.create({
     backgroundColor: "#FFFFFF",
     borderRadius: 12,
     padding: 16,
+    marginBottom: 170,
     borderWidth: 1,
     borderColor: "#FF3B30",
   },
@@ -471,25 +472,6 @@ export const profileStyles = StyleSheet.create({
     fontWeight: "600",
     color: "#FF3B30",
     marginLeft: 8,
-  },
-});
-
-
-//-------------------------------------------------------------------------------------------
-// 1EDIT-PROFILE.TSX STYLES
-//-------------------------------------------------------------------------------------------
-
-export const editProfileStyles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  profileImage: { //to be deleted or edited (used for the meme)
-    width: 430,
-    height: 430,
-    resizeMode: 'contain',
-    marginTop: 20,    // Adds some space below the text
   },
 });
 
@@ -684,6 +666,7 @@ export const CameraStyles2 = StyleSheet.create({
     shadowOpacity: 0.1,
     shadowRadius: 3,
     elevation: 3,
+    
   },
   recipeImage: {
     width: 70,
@@ -700,3 +683,59 @@ export const CameraStyles2 = StyleSheet.create({
     color: "#1C1C1E",
   },
 });
+
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////
+//
+//                 STYLES FOR (PROFILE) FILES (1EDIT-PROFILE,2NOTIFICATIONS, ETC.)
+//
+///////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+//-------------------------------------------------------------------------------------------
+// 1EDIT-PROFILE.TSX STYLES
+//-------------------------------------------------------------------------------------------
+
+export const editProfileStyles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  profileImage: { //to be deleted or edited (used for the meme)
+    width: 430,
+    height: 430,
+    resizeMode: 'contain',
+    marginTop: 20,    // Adds some space below the text
+  },
+});
+
+
+//------------------------------------------------------------------------------------------
+// 2NOTIFICAITONS.TSX
+//------------------------------------------------------------------------------------------
+
+export const notificaitonStyles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  profileImage: {
+    width: 430,
+    height: 430,
+    resizeMode: 'contain',
+    marginTop: 20
+  }
+})
+
+
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////
