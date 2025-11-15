@@ -12,7 +12,7 @@ import LottieView from 'lottie-react-native';
 import React from 'react';
 import { View } from 'react-native';
 
-import { LoadingAnimationStyles } from "../app/styles";
+import { LoadingAnimationStyles } from "../styles";
 
 // This component will just show the Lottie animation
 // It's set to autoplay and loop

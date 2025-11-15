@@ -17,7 +17,7 @@ Then, this component could read from that storage and truly show "Recent Recipes
 
 import React from "react";
 import { Image, Text, TouchableOpacity, View } from "react-native";
-import { recentStyles } from "../app/styles";
+import { recentStyles } from "../styles";
 
 type Props = {
   onPress?: (id: string) => void;

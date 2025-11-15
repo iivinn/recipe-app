@@ -1,18 +1,5 @@
 // components/RecipeDetailModal.tsx
 
-
-/* This is the re-usable bottom sheet. 
-It's "dumb" (in a good way) and just waits to be told which recipe ID to show. 
-When present(recipeId) is called, it wakes up, fetches all the data for that
-single recipe, and displays it.
-
-Feature Idea: Add a "Save to Favorites" button (a heart icon) inside this modal. 
-When the user taps it, we could save the recipe.id to an array in AsyncStorage. 
-This would be the first step to building the "Favorites" tab. */
-
-
-
-
 import { Ionicons } from "@expo/vector-icons";
 import {
   BottomSheetBackdrop,
@@ -29,15 +16,19 @@ import React, {
 import {
   ActivityIndicator,
   Image,
+  Linking, // Added to open the URL
   Text,
-  View
+  TouchableOpacity, // Added for the button
+  View,
 } from "react-native";
 
 //Importing styles
-import { RecipeDetailModalStyles } from "../app/styles";
+import { RecipeDetailModalStyles } from "../styles";
 
 const SPOONACULAR_API_KEY = "bac33e06c5634e57b51b7d5b1192ee26"; // TODO: Move to .env
 
+// --- MODIFIED ---
+// Added analyzedInstructions and sourceUrl
 type RecipeDetail = {
   id: number;
   title: string;
@@ -46,7 +37,10 @@ type RecipeDetail = {
   servings: number;
   extendedIngredients: { original: string }[];
   instructions: string;
+  analyzedInstructions: { name: string; steps: { number: number; step: string }[] }[];
+  sourceUrl: string;
 };
+// --- END MODIFIED ---
 
 // Define the props for the component
 type Props = {};
@@ -89,6 +83,8 @@ const RecipeDetailModal = forwardRef<RecipeDetailModalRef, Props>(
           throw new Error("Failed to fetch recipe details.");
         }
         const data = (await response.json()) as RecipeDetail;
+
+
         setRecipe(data);
       } catch (err) {
         setError(err instanceof Error ? err.message : "An unknown error occurred");
@@ -117,20 +113,71 @@ const RecipeDetailModal = forwardRef<RecipeDetailModalRef, Props>(
         return null;
       }
 
-      // Clean up HTML tags from Spoonacular's instructions
-      const cleanInstructions = recipe.instructions
-        ? recipe.instructions.replace(/<[^>]+>/g, "")
-        : "No instructions provided.";
+      // --- MODIFIED ---
+      // Check if we have the clean, structured instructions
+      const hasAnalyzedInstructions =
+        recipe.analyzedInstructions && recipe.analyzedInstructions.length > 0;
+
+      // A helper function to render the instructions
+      const renderInstructions = () => {
+        
+        // OPTION 1: Best case, use analyzedInstructions
+        if (hasAnalyzedInstructions) {
+          // We map over each 'step' in the first 'section' of instructions
+          return recipe.analyzedInstructions[0].steps.map((step) => (
+            <Text key={step.number} style={RecipeDetailModalStyles.stepText}>
+              {`\u2022 ${step.step}`}
+            </Text>
+          ));
+        }
+
+        // OPTION 2: Fallback, use the messy instructions string
+        if (recipe.instructions) {
+          const cleanInstructions = recipe.instructions.replace(/<[^>]+>/g, "");
+          return (
+            <Text style={RecipeDetailModalStyles.stepText}>
+              {cleanInstructions}
+            </Text>
+          );
+        }
+
+        // OPTION 3: Fallback, check for a source URL
+        if (recipe.sourceUrl) {
+          return (
+            <TouchableOpacity
+              style={RecipeDetailModalStyles.sourceButton} // We will add this style
+              onPress={() => Linking.openURL(recipe.sourceUrl)}
+            >
+              <Text style={RecipeDetailModalStyles.sourceButtonText}>
+                View Full Recipe
+              </Text>
+              <Ionicons name="open-outline" size={16} color="#FFFFFF" />
+            </TouchableOpacity>
+          );
+        }
+        // --- END MODIFIED ---
+
+        // OPTION 4: Worst case, show no instructions
+        return (
+          <Text style={RecipeDetailModalStyles.stepText}>
+            No instructions provided.
+          </Text>
+        );
+      };
+      // --- END HELPER ---
 
       return (
         // Use BottomSheetScrollView for scrollable content *inside* the sheet
-        <BottomSheetScrollView contentContainerStyle={RecipeDetailModalStyles.scrollContainer}>
+        <BottomSheetScrollView
+          contentContainerStyle={RecipeDetailModalStyles.scrollContainer}
+        >
           <Image source={{ uri: recipe.image }} style={RecipeDetailModalStyles.image} />
           <Text style={RecipeDetailModalStyles.title}>{recipe.title}</Text>
 
           <View style={RecipeDetailModalStyles.infoRow}>
             <View style={RecipeDetailModalStyles.infoBox}>
               <Ionicons name="time-outline" size={24} color="#44AF16" />
+              {/* --- TYPO FIXED HERE --- */}
               <Text style={RecipeDetailModalStyles.infoText}>{recipe.readyInMinutes} min</Text>
             </View>
             <View style={RecipeDetailModalStyles.infoBox}>
@@ -148,10 +195,13 @@ const RecipeDetailModal = forwardRef<RecipeDetailModalRef, Props>(
             ))}
           </View>
 
+          {/* --- MODIFIED --- */}
+          {/* This section now calls our new helper function */}
           <View style={RecipeDetailModalStyles.section}>
             <Text style={RecipeDetailModalStyles.sectionTitle}>Instructions</Text>
-            <Text style={RecipeDetailModalStyles.stepText}>{cleanInstructions}</Text>
+            {renderInstructions()}
           </View>
+          {/* --- END MODIFIED --- */}
         </BottomSheetScrollView>
       );
     };
@@ -178,4 +228,3 @@ const RecipeDetailModal = forwardRef<RecipeDetailModalRef, Props>(
 );
 
 export default RecipeDetailModal;
-

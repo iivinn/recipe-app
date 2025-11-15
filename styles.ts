@@ -55,7 +55,7 @@ export const homeStyles = StyleSheet.create({
     top: 80, // Pushes this section down to account for the overlapping header
   },
   section1: { // applied to Dishcovery and AI text
-    padding: 24,
+    padding: 30,
     top: 14, // Pushes this section down to account for the overlapping header
     alignItems: "center",
   },
@@ -89,6 +89,66 @@ export const homeStyles = StyleSheet.create({
     color: "#1C1C1E",
     marginTop: 8,
   },
+  // --- ADD THESE NEW STYLES to your homeStyles object ---
+
+categorySection: {
+  // Container for the whole slider
+  marginTop: 15,
+  marginBottom: -50,
+},
+categoryScrollView: {
+  // This adds padding so the slider doesn't touch the screen edge
+  paddingHorizontal: 20,
+  paddingVertical: 5, // Adds space for the shadow
+},
+categoryButton: {
+  // Base style for ALL buttons
+  flexDirection: 'row',
+  alignItems: 'center',
+  paddingHorizontal: 16,
+  paddingVertical: 10,
+  marginRight: 10,       // Space between buttons
+  borderRadius: 20,      // This creates the "pill" shape
+
+  // A subtle shadow to make them "pop"
+  shadowColor: '#000',
+  shadowOffset: { width: 0, height: 2 },
+  shadowOpacity: 0.1,
+  shadowRadius: 3,
+  elevation: 3,
+},
+activeCategoryButton: {
+  // Specific style for the ACTIVE button
+  backgroundColor: '#44AF16',
+},
+inactiveCategoryButton: {
+  // Specific style for INACTIVE buttons
+  backgroundColor: '#FFFFFF',
+  borderWidth: 1,
+  borderColor: '#E0E0E0', // Light grey stroke
+},
+categoryIcon: {
+  // Adds space between the icon and the text
+  marginRight: 8,
+},
+categoryButtonText: {
+  // Base text style
+  fontSize: 14,
+  fontWeight: '600',
+},
+activeCategoryText: {
+  // Active text color
+  color: '#FFFFFF',
+},
+inactiveCategoryText: {
+  // Inactive text color
+  color: '#44AF16',
+},
+
+// --- END OF NEW STYLES ---
+
+
+
 });
 
 // ---------------------------------
@@ -538,6 +598,27 @@ export const RecipeDetailModalStyles = StyleSheet.create({
     lineHeight: 24,
     marginBottom: 8,
   },
+  // --- ADD THESE STYLES to RecipeDetailModalStyles ---
+  sourceButton: {
+    backgroundColor: '#44AF16', // Your app's main color
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingVertical: 12,
+    paddingHorizontal: 20,
+    borderRadius: 25,
+    marginTop: 10,
+    alignSelf: 'flex-start', // Makes it not stretch full-width
+  },
+  sourceButtonText: {
+    color: '#FFFFFF',
+    fontSize: 16,
+    fontWeight: '600',
+    marginRight: 8,
+  },
+
+
+
 });
 
 //--------------------------------------------------------------------------------------------
@@ -739,3 +820,6 @@ export const notificaitonStyles = StyleSheet.create({
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+

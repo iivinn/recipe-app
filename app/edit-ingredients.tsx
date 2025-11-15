@@ -16,17 +16,17 @@ import { Ionicons } from "@expo/vector-icons";
 import { useLocalSearchParams, useRouter } from "expo-router";
 import React, { useEffect, useState } from "react";
 import {
-  Alert,
-  FlatList,
-  KeyboardAvoidingView,
-  Platform,
-  Text,
-  TextInput,
-  TouchableOpacity,
-  View
+    Alert,
+    FlatList,
+    KeyboardAvoidingView,
+    Platform,
+    Text,
+    TextInput,
+    TouchableOpacity,
+    View
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { cameraStyles, EditIngredientsStyles } from "./styles"; // reuse styles (cameraStyles) and import another one
+import { cameraStyles, EditIngredientsStyles } from "../styles"; // reuse styles (cameraStyles) and import another one
 
 //-------------------------------------------------------------------------------------------
 

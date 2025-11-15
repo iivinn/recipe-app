@@ -1,11 +1,11 @@
 
 import React from 'react';
 import {
-  Text,
-  View
+    Text,
+    View
 } from 'react-native';
 
-import { notificaitonStyles } from "../../styles";
+import { notificaitonStyles } from "../../../styles";
 
 export default function DarkmodeScreen() {
   return (

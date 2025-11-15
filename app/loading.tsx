@@ -16,7 +16,7 @@ import { useLocalSearchParams, useRouter } from 'expo-router';
 import React, { useEffect } from 'react';
 import { Alert, Text, View } from 'react-native';
 
-import { LoadingStyles } from "./styles";
+import { LoadingStyles } from "../styles";
 
 const SPOONACULAR_API_KEY = "bac33e06c5634e57b51b7d5b1192ee26";
 

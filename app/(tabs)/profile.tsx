@@ -2,15 +2,15 @@
 
 import { Ionicons } from "@expo/vector-icons";
 import {
-  ScrollView,
-  Text,
-  TouchableOpacity,
-  View
+    ScrollView,
+    Text,
+    TouchableOpacity,
+    View
 } from "react-native";
 
 import { SafeAreaView } from "react-native-safe-area-context";
 
-import { profileStyles } from "../styles";
+import { profileStyles } from "../../styles";
 
 import { Link } from 'expo-router';
 
